@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with source_all_movies_cleansed as (
 
     select

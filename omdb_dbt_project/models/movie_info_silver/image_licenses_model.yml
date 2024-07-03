@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: image_lisences_cleansed
+    description: Image licenses"
+    columns:
+      - name: image_id
+        description: "alphanumeric unique identifier of the images"
+        tests:
+          - unique
+          - not_null
+      - name: source
+        description: "The scource of image, a url"
+      - name: licence_id
+        description: "Type of license"
+      - name: author
+        description: "The author of license"

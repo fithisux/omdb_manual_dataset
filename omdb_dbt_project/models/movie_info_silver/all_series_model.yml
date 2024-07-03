@@ -2,11 +2,11 @@
 version: 2
 
 models:
-  - name: all_movies_cleansed
-    description: "All movies"
+  - name: all_series_cleansed
+    description: "All series"
     columns:
       - name: id
-        description: "alphanumeric unique identifier of the movie"
+        description: "alphanumeric unique identifier of the series"
         tests:
           - not_null
           - unique
@@ -15,9 +15,9 @@ models:
         tests:
            - not_null
            - relationships:
-              to: ref('all_movie_aliases_iso_cleansed')
-              field: movie_id
+              to: ref('all_movies_cleansed')
+              field: id
       - name: name
-        description: "the name of the movie in english us"
+        description: "the name of the series in english us"
       - name: date
         description: "I suspect the production date"

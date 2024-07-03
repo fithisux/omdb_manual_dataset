@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with source_all_episodes_cleansed as (
 
     select
@@ -6,7 +8,7 @@ with source_all_episodes_cleansed as (
     
     FROM {{ ref('all_episodes_with_types') }}
 
-    where parent_id in (select * from {{ref('all_seasons_series_ids')}})
+    --where parent_id in (select * from {{ref('all_seasons_series_ids')}})
 
 )
 

@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with source_all_categories_cleansed as (
 
     select

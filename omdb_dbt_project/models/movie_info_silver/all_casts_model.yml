@@ -18,14 +18,14 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_movies_with_types')
+              to: ref('all_movies_cleansed')
               field: id
       - name: person_id
         description: "person of the cast"
         tests:
           - not_null
           - relationships:
-              to: ref('all_people_with_types')
+              to: ref('all_people_cleansed')
               field: id
       - name: job_id
         description: "what job was assigned to person"
