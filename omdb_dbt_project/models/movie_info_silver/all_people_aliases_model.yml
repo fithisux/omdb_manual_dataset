@@ -6,12 +6,9 @@ models:
     description: "All movies"
     columns:
       - name: person_id
-        description: "alphanumeric unique identifier of the person"
+        description: "alphanumeric unique identifier of the person, some people have only aliases"
         tests:
           - not_null
-          - relationships:
-              to: ref('all_people_cleansed')
-              field: id
       - name: name
         description: "The person"
         tests:

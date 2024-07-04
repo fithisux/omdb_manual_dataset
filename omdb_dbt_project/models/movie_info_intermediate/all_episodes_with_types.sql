@@ -2,6 +2,7 @@ with source_all_episodes_with_types as (
 
     select
 
+    id::bigint as id,
     (case when name='\N' then NULL else name end)::varchar as name,
     (case when parent_id='\N' then NULL else parent_id end)::bigint as parent_id,
     (case when series_id='\N' then NULL else series_id end)::bigint as series_id,

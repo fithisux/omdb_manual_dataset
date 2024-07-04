@@ -18,8 +18,8 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_movies_cleansed')
-              field: id
+              to: ref('with_cleansing_all_ids_of_video')
+              field: movie_id
       - name: person_id
         description: "person of the cast"
         tests:

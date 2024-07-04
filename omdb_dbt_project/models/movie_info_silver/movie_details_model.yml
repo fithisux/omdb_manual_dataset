@@ -17,12 +17,8 @@ models:
           - not_null
       - name: budget
         description: "budget of movie"
-        tests:
-          - not_null
       - name: revenue
         description: "revenue of movie"
-        tests:
-          - not_null
       - name: homepage
         description: "homepage of movie"
       

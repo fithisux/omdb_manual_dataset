@@ -11,8 +11,8 @@ models:
           - not_null
           - unique
           - relationships:
-              to: ref('all_movies_cleansed')
-              field: id
+              to: ref('all_movies_aliases_iso_cleansed')
+              field: movie_id
       - name: vote_average
         description: "The average rating"
         tests:

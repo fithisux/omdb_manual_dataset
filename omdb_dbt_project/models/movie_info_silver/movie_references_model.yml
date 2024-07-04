@@ -7,7 +7,8 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - movie_id
-            - reference_id  
+            - referenced_id
+            - type  
     columns:
       - name: movie_id
         description: "alphanumeric unique identifier of the movie"
@@ -16,7 +17,7 @@ models:
           - relationships:
               to: ref('all_movies_iso_cleansed')
               field: movie_id
-      - name: reference_id
+      - name: referenced_id
         description: "The reference"
         tests:
            - not_null

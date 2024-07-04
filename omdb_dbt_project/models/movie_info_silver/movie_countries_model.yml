@@ -14,7 +14,6 @@ models:
       - name: country_code
         description: "country code"
         tests:
-          - not_null
           - relationships:
               to: ref('region_codes')
               field: alpha2

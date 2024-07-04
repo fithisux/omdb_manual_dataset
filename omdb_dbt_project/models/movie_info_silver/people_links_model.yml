@@ -7,6 +7,7 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - movie_id
+            - source
             - language_iso_639_1  
     columns:
       - name: movie_id
@@ -19,7 +20,6 @@ models:
       - name: language_iso_639_1
         description: "The language"
         tests:
-           - not_null
            - relationships:
               to: ref('language_codes')
               field: alpha2

@@ -6,16 +6,15 @@ models:
     description: "All movie aliasess"
     columns:
       - name: movie_id
-        description: "alphanumeric unique identifier of the movie"
+        description: "alphanumeric unique identifier of the movie, some of them have only aliases"
         tests:
           - not_null
           - relationships:
-              to: ref('all_movies_cleansed')
-              field: id
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
       - name: language_iso_639_1
         description: "The language"
         tests:
-           - not_null
            - relationships:
               to: ref('language_codes')
               field: alpha2

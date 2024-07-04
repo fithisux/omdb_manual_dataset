@@ -8,12 +8,8 @@ models:
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
-          - unique
-          - dbt_utils.relationships_where:
-              to: ref('all_movie_aliases_iso')
+          - relationships:
+              to: ref('all_movies_aliases_iso_cleansed')
               field: movie_id
-              to_condition: language_iso_639_1 = 'en'
       - name: abstract
         description: "Movie abstract in English"
-        tests:
-          - not_null

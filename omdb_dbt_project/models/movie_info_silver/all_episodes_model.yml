@@ -5,17 +5,22 @@ models:
   - name: all_episodes_cleansed
     description: "All categories"
     columns:
+      - name: id
+        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        tests:
+           - unique
+           - not_null
       - name: parent_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         tests:
            - relationships:
-              to: ref('all_seasons_series_ids')
+              to: ref('with_cleansing_all_ids_of_series')
               field: id
       - name: series_id
         description: "The series id"
         tests:
            - relationships:
-              to: ref('all_series_with_types')
+              to: ref('all_series_cleansed')
               field: id
       - name: name
         description: "the name of the episode in english us"

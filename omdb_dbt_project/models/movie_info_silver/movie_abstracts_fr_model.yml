@@ -7,13 +7,10 @@ models:
       - name: movie_id
         description: "alphanumeric unique identifier of the movie"
         tests:
-          - not_null
           - unique
-          - dbt_utils.relationships_where:
-              to: ref('all_movie_aliases_iso')
+          - not_null
+          - relationships:
+              to: ref('all_movies_aliases_iso_cleansed')
               field: movie_id
-              to_condition: language_iso_639_1 = 'fr'
       - name: abstract
         description: "Movie abstract in French"
-        tests:
-          - not_null

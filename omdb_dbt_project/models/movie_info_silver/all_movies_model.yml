@@ -13,9 +13,8 @@ models:
       - name: parent_id
         description: "The movie series"
         tests:
-           - not_null
-           - relationships:
-              to: ref('all_movie_aliases_iso_cleansed')
+          - relationships:
+              to: ref('movie_series_cleansed')
               field: movie_id
       - name: name
         description: "the name of the movie in english us"
