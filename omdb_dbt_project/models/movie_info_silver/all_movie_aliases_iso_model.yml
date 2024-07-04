@@ -6,7 +6,7 @@ models:
     description: "All movie aliasess"
     columns:
       - name: movie_id
-        description: "alphanumeric unique identifier of the movie, some of them have only aliases"
+        description: "alphanumeric unique identifier of the movie, some of them have only aliases and filter them out"
         tests:
           - not_null
           - relationships:
