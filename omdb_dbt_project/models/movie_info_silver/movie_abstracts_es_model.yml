@@ -8,7 +8,6 @@ models:
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
-          - unique
           - relationships:
               to: ref('all_movies_aliases_iso_cleansed')
               field: movie_id

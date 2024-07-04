@@ -7,7 +7,6 @@ with source_movie_abstracts_fr_cleansed as (
     *
     
     FROM {{ ref('movie_abstracts_fr_with_types') }}
-    where movie_id in (select movie_id FROM {{ref('all_movie_aliases_iso_cleansed')}})
 
 )
 
