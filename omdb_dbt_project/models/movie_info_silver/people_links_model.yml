@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: people_links_cleansed
+    description: "People categorization through links"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - language_iso_639_1  
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('all_movies_iso_cleansed')
+              field: movie_id
+      - name: language_iso_639_1
+        description: "The language"
+        tests:
+           - not_null
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2
+      - name: source
+        description: "The source link"
+        tests:
+           - not_null
+      - name: key
+        description: "The person name"
+        tests:
+           - not_null

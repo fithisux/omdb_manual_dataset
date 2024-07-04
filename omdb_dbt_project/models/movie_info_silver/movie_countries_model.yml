@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: movie_countries_cleansed
+    description: "Movie categorization"
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('all_movies_iso_cleansed')
+              field: movie_id
+      - name: country_code
+        description: "country code"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('region_codes')
+              field: alpha2

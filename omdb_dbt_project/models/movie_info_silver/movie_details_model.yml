@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: movie_details_cleansed
+    description: "Movie details" 
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('all_movies_iso_cleansed')
+              field: movie_id
+      - name: runtime
+        description: "runtime of movie"
+        tests:
+          - not_null
+      - name: budget
+        description: "budget of movie"
+        tests:
+          - not_null
+      - name: revenue
+        description: "revenue of movie"
+        tests:
+          - not_null
+      - name: homepage
+        description: "homepage of movie"
+      
