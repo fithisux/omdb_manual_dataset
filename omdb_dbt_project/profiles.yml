@@ -4,8 +4,8 @@ omdbprofile:
     dev:
       type: postgres
       host: localhost
-      user: nebula
-      password: nebula
+      user: postgres
+      password: postgres
       port: 5432
-      dbname: warehouse
+      dbname: postgres
       schema: dbt
