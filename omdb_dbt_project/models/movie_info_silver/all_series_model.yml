@@ -15,7 +15,7 @@ models:
         tests:
            - relationships:
               to: ref('with_cleansing_all_ids_of_movies')
-              field: movie_id
+              field: id
       - name: name
         description: "the name of the series in english us"
       - name: date
