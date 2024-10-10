@@ -19,7 +19,7 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_movies_iso_cleansed')
+              to: ref('all_movies_aliases_iso_cleansed')
               field: movie_id
       - name: language_iso_639_1
         description: "The language"
