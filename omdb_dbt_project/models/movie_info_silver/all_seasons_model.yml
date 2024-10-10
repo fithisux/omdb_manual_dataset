@@ -11,10 +11,10 @@ models:
           - not_null
           - unique
       - name: parent_id
-        description: "The series seasons which I REQUIRE TO NOT BE EMPTY"
+        description: "The series and seasons which contain this"
         tests:
            - relationships:
-              to: ref('with_cleansing_all_ids_of_general_series')
+              to: ref('with_cleansing_all_ids_of_series')
               field: id
       - name: name
         description: "the name of the series in english us"
