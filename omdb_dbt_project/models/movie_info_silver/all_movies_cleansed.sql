@@ -10,6 +10,17 @@ with source_all_movies_cleansed as (
 
     Where 
         parent_id is null or parent_id in (select id from {{ ref('all_movieseries_cleansed') }} )
+
+    UNION
+
+    select
+
+    id, name, parent_id, date
+    
+    FROM {{ ref('all_episodes_with_types') }}
+
+    WHERE parent_id in (select id from {{ ref('all_movieseries_cleansed') }} )
+
         
 
 )
