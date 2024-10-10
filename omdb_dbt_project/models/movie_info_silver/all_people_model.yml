@@ -15,9 +15,9 @@ models:
         tests:
            - not_null
       - name: birthday
-        description: "the name of the movie in english us"
+        description: "Birth day"
       - name: deathday
-        description: "I suspect the production date"
+        description: "Death day"
       - name: gender
         description: "0 female, 1 male, 2 other, 3 queer, NULL not specified"
         tests:

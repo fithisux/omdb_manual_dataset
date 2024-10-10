@@ -15,11 +15,11 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('category_names_with_types')
+              to: ref('category_names_cleansed')
               field: category_id
       - name: parent_id
         description: "the parent category"
         tests:
           - relationships:
-              to: ref('category_names_with_types')
+              to: ref('category_names_cleansed')
               field: category_id
