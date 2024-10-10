@@ -9,6 +9,9 @@ models:
         tests:
           - unique
           - not_null
+          - relationships:
+              to: ref('image_ids_cleansed')
+              field: image_id
       - name: source
         description: "The scource of image, a url"
       - name: licence_id
