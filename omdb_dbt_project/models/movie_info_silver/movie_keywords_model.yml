@@ -14,7 +14,7 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_movies_aliases_iso_cleansed')
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
               field: movie_id
       - name: category_id
         description: "alphanumeric unique identifier of the category"
@@ -22,4 +22,4 @@ models:
           - not_null
           - relationships:
               to: ref('category_names_cleansed')
-              field: id
+              field: category_id

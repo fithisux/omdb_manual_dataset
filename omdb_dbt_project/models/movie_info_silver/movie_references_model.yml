@@ -15,7 +15,7 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_movies_aliases_iso_cleansed')
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
               field: movie_id
       - name: referenced_id
         description: "The reference"

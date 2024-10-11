@@ -7,6 +7,7 @@ with source_movie_countries_cleansed as (
     *
     
     FROM {{ ref('movie_countries_with_types') }}
+    where movie_id in (select movie_id from {{ref('with_cleansing_all_ids_of_original_movies_and_series')}})
 
 )
 
