@@ -8,6 +8,16 @@ with source_all_series_cleansed as (
     
     FROM {{ ref('all_series_with_types') }}
 
+    UNION
+
+    select
+
+    id, name, parent_id, date
+    
+    FROM {{ ref('all_movies_with_types') }}
+
+    where id in (select parent_id from {{ ref('all_seasons_with_types') }} ) 
+
 )
 
 select * from source_all_series_cleansed

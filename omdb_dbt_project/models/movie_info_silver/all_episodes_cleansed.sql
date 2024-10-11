@@ -7,7 +7,7 @@ with source_all_episodes_cleansed as (
     *
     
     FROM {{ ref('all_episodes_with_types') }}
-    where parent_id not in (select id from {{ ref('all_movieseries_cleansed') }} )
+    where (parent_id is null or parent_id not in (select id from {{ ref('all_movieseries_cleansed') }}))
 
 )
 

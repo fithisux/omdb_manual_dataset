@@ -7,18 +7,19 @@ with source_all_seasons_cleansed as (
     *
     
     FROM {{ ref('all_seasons_with_types') }}
-    
+
+    where (parent_id is null or parent_id not in (select id from {{ ref('all_seasons_with_types') }} ))
+     
+
     UNION
 
     select
 
-    id, name, parent_id, date
+    xx1.id, xx1.name, xx2.parent_id, xx1.date
     
-    FROM {{ ref('all_movies_with_types') }}
+    FROM {{ ref('all_seasons_with_types') }} xx1
 
-    where id in (select parent_id from {{ ref('all_seasons_with_types') }} )    
-
-
+    inner join {{ ref('all_seasons_with_types') }} xx2 on xx1.parent_id=xx2.id  
 
 )
 
