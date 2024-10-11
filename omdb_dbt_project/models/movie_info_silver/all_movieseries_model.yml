@@ -4,6 +4,9 @@ version: 2
 models:
   - name: all_movieseries_cleansed
     description: "All movie series"
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "parent_id is null"
     columns:
       - name: id
         description: "alphanumeric unique identifier of the movie series"
