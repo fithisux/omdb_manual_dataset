@@ -14,7 +14,7 @@ models:
         description: "The movie series"
         tests:
            - relationships:
-              to: ref('with_cleansing_all_ids_of_movies')
+              to: ref('all_movieseries_cleansed')
               field: id
       - name: name
         description: "the name of the series in english us"
