@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: content_references_gold
+    description: "Movie categorization through references"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - referenced_id
+            - type  
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: referenced_id
+        description: "The reference"
+        tests:
+           - not_null
+      - name: type
+        description: "The reference type"
+        tests:
+           - accepted_values:
+              values: ['Homage', 'Remake', 'Influence', 'SpinOff', 'Parody']

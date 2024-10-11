@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: all_people_aliases_cleansed
+  - name: all_people_aliases_gold
     description: "All movies"
     columns:
       - name: person_id
@@ -10,7 +10,7 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_people_cleansed')
+              to: ref('all_people_gold')
               field: id
       - name: name
         description: "The person"

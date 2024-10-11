@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: content_season_gold
+    description: "All seasons"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the seasons"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: parent_id
+        description: "The series and seasons which contain this"
+        tests:
+           - relationships:
+              to: ref('content_Series_gold')
+              field: id

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: content_abstract_gold
+    description: "Content abstracts"
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: abstract
+        description: "Movie abstract in English"
+      - name: lang
+        description: "language"
+        tests:
+        - accepted_values:
+              values: ['es', 'en', 'de', 'fr']

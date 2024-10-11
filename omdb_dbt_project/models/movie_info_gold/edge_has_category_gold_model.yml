@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: link_has_category_gold
+    description: "Movie categorization"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - category_id  
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('content_gold')
+              field: movie_id
+      - name: category_id
+        description: "alphanumeric unique identifier of the category"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('category_names_gold')
+              field: category_id

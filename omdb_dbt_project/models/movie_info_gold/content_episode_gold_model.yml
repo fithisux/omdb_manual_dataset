@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: content_episode_gold
+    description: "All episodes"
+    columns:
+      - name: id
+        description: "The episode id."
+        tests:
+           - unique
+           - not_null
+           - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: parent_id
+        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        tests:
+           - relationships:
+              to: ref('with_cleansing_all_ids_of_series')
+              field: id

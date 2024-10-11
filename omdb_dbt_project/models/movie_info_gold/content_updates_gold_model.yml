@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: content_updates_gold
+    description: "Movie categorization"
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: last_update
+        description: "when last update happened"
+        tests:
+          - not_null
