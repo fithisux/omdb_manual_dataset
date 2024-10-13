@@ -15,6 +15,9 @@ models:
         description: "alphanumeric unique identifier of the series"
         tests:
           - not_null
+          - relationships:
+              to: ref('all_categories_gold')
+              field: id
       - name: name
         description: "The average rating"
         tests:

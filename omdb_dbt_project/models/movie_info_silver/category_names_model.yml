@@ -7,14 +7,17 @@ models:
     tests:
     - dbt_utils.unique_combination_of_columns:
         combination_of_columns:
-          - id
+          - category_id
           - name
           - language_iso_639_1
     columns:
-      - name: id
+      - name: category_id
         description: "alphanumeric unique identifier of the series"
         tests:
           - not_null
+          - relationships:
+              to: ref('all_categories_cleansed')
+              field: id
       - name: name
         description: "The average rating"
         tests:
