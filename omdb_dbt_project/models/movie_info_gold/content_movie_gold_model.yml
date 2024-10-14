@@ -10,9 +10,11 @@ models:
         tests:
           - not_null
           - unique
-          - relationships:
+          - dbt_utils.relationships_where:
               to: ref('content_gold')
               field: id
+              from_condition: true
+              to_condition: content_type = 'movie'
       - name: parent_id
         description: "The movie series"
         tests:
