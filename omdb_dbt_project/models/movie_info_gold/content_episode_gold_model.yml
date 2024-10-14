@@ -4,24 +4,17 @@ version: 2
 models:
   - name: content_episode_gold
     description: "All episodes"
-    tests:
-      - dbt_utils.expression_is_true:
-          expression: "coalesce(provided_series_id, series_id) = series_id"
     columns:
       - name: id
         description: "The episode id."
         tests:
            - unique
            - not_null
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('content_gold')
               field: id
-      - name: provided_series_id
-        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
-        tests:
-           - relationships:
-              to: ref('content_series_gold')
-              field: id
+              from_condition: true
+              to_condition: content_type = 'episode'
       - name: series_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         tests:
