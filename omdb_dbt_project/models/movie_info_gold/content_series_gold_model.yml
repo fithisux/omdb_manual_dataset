@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: content_series_gold
+    description: "All series"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the series"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: parent_id
+        description: "The movie series"
+        tests:
+           - relationships:
+              to: ref('content_movieseries_gold')
+              field: id

@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: all_categories_cleansed
+  - name: all_categories_gold
     description: "All categories"
     columns:
       - name: id
@@ -11,18 +11,18 @@ models:
           - unique
           - not_null
           - relationships:
-              to: ref('category_names_cleansed')
+              to: ref('category_names_gold')
               field: category_id
       - name: root_id
         description: "the category"
         tests:
           - not_null
           - relationships:
-              to: ref('all_categories_cleansed')
+              to: ref('all_categories_gold')
               field: id
       - name: parent_id
         description: "the parent category"
         tests:
           - relationships:
-              to: ref('all_categories_cleansed')
+              to: ref('all_categories_gold')
               field: id

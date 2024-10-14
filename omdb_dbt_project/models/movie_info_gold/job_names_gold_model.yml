@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: job_names_gold
+    description: Job names"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - job_id
+            - name
+            - language_iso_639_1
+    columns:
+      - name: job_id
+        description: "alphanumeric unique identifier of the images"
+        tests:
+          - not_null
+      - name: name
+        description: "Job name"
+        tests:
+          - not_null
+      - name: language_iso_639_1
+        description: "language"
+        tests:
+           - not_null
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2

@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: content_gold
+    description: "All content"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - unique
+      - name: parent_id
+        description: "The self references"
+        tests:
+          - relationships:
+              to: ref('content_gold')
+              field: id
+      - name: content_type
+        description: "the content type"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['episode', 'season', 'movie', 'series', 'movieseries']
+      - name: name
+        description: "the name of the movie in english us"
+      - name: date
+        description: "I suspect the production date"
+      - name: runtime
+        description: "runtime of movie"
+      - name: budget
+        description: "budget of movie"
+      - name: revenue
+        description: "revenue of movie"
+      - name: homepage
+        description: "homepage of movie"
+      - name: vote_average
+        description: "The average rating"
+      - name: votes_count
+        description: "the count of votes"
