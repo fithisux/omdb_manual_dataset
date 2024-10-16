@@ -16,12 +16,6 @@ with source_source_all_content_gold as (
 
 select aa.*, bb.runtime, bb.revenue, bb.budget, bb.homepage, cc.vote_average, cc.votes_count, dd.last_update
 from source_source_all_content_gold aa
-<<<<<<< HEAD
-left join {{ ref('movie_details_cleansed') }} bb on aa.id=bb.movie_id
-left join {{ ref('all_votes_cleansed') }} cc on aa.id=cc.movie_id
-left join {{ ref('movie_content_updates_cleansed') }} dd on aa.id=dd.movie_id
-=======
 left join {{ ref('movie_details_cleansed') }} bb on aa.content_id=bb.movie_id
 left join {{ ref('all_votes_cleansed') }} cc on aa.content_id=cc.movie_id
 left join {{ ref('movie_content_updates_cleansed') }} dd on aa.content_id=dd.movie_id
->>>>>>> origin/main
