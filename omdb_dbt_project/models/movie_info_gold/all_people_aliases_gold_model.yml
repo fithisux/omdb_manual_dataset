@@ -11,7 +11,7 @@ models:
           - not_null
           - relationships:
               to: ref('all_people_gold')
-              field: id
+              field: person_id
       - name: name
         description: "The person"
         tests:

@@ -5,7 +5,7 @@ models:
   - name: all_people_gold
     description: "All people"
     columns:
-      - name: id
+      - name: person_id
         description: "alphanumeric unique identifier of the person"
         tests:
           - not_null

@@ -1,21 +1,21 @@
 version: 2
 
 models:
-  - name: edge_has_keyword_gold_model
-    description: "Movie categorization through keywords"
+  - name: content_has_category_gold
+    description: "Movie categorization"
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - movie_id
+            - content_id
             - category_id  
     columns:
-      - name: movie_id
+      - name: content_id
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
           - relationships:
               to: ref('content_gold')
-              field: id
+              field: content_id
       - name: category_id
         description: "alphanumeric unique identifier of the category"
         tests:

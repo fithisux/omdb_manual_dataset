@@ -10,4 +10,4 @@ with source_edge_has_country_gold as (
 
 )
 
-select * from source_edge_has_country_gold
+select movie_id as content_id, country_code from source_edge_has_country_gold

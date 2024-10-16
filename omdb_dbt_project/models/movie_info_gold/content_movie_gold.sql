@@ -4,7 +4,7 @@ with source_content_movie_gold as (
 
     select
 
-    id, parent_id
+    content_id as id, parent_id
     
     FROM {{ ref('content_gold') }}
 

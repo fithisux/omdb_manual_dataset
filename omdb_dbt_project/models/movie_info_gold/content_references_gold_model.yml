@@ -6,17 +6,17 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - movie_id
+            - content_id
             - referenced_id
             - type  
     columns:
-      - name: movie_id
+      - name: content_id
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
           - relationships:
               to: ref('content_gold')
-              field: id
+              field: content_id
       - name: referenced_id
         description: "The reference"
         tests:
