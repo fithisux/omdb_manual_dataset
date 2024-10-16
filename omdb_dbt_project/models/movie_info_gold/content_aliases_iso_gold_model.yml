@@ -5,13 +5,13 @@ models:
   - name: content_aliases_iso_gold
     description: "All movie aliasess"
     columns:
-      - name: id
+      - name: content_id
         description: "alphanumeric unique identifier of the movie, some of them have only aliases and filter them out"
         tests:
           - not_null
           - relationships:
               to: ref('content_gold')
-              field: id
+              field: content_id
       - name: language_iso_639_1
         description: "The language"
         tests:

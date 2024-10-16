@@ -9,4 +9,4 @@ with source_content_trailers_gold as (
     FROM {{ ref('trailers_cleansed') }}
 )
 
-select * from source_content_trailers_gold
+select movie_id as content_id, trailer_id, language_iso_639_1, source, key from source_content_trailers_gold

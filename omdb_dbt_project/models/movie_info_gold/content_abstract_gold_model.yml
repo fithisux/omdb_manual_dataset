@@ -4,13 +4,13 @@ models:
   - name: content_abstract_gold
     description: "Content abstracts"
     columns:
-      - name: movie_id
+      - name: content_id
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
           - relationships:
               to: ref('content_gold')
-              field: id
+              field: content_id
       - name: abstract
         description: "Movie abstract in English"
       - name: lang

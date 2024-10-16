@@ -12,7 +12,7 @@ models:
            - not_null
            - dbt_utils.relationships_where:
               to: ref('content_gold')
-              field: id
+              field: content_id
               from_condition: true
               to_condition: content_type = 'episode'
       - name: series_id

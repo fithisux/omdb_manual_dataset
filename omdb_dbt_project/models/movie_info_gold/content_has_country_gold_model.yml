@@ -1,16 +1,16 @@
 version: 2
 
 models:
-  - name: edge_has_country_gold
+  - name: content_has_country_gold
     description: "Movie categorization"
     columns:
-      - name: movie_id
+      - name: content_id
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
           - relationships:
-              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
-              field: movie_id
+              to: ref('content_gold')
+              field: content_id
       - name: country_code
         description: "country code"
         tests:

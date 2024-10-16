@@ -4,7 +4,7 @@ models:
   - name: content_gold
     description: "All content"
     columns:
-      - name: id
+      - name: content_id
         description: "alphanumeric unique identifier of the movie"
         tests:
           - not_null
@@ -14,7 +14,7 @@ models:
         tests:
           - relationships:
               to: ref('content_gold')
-              field: id
+              field: content_id
       - name: content_type
         description: "the content type"
         tests:

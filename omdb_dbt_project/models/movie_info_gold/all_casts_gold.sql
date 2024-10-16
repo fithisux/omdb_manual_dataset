@@ -18,4 +18,4 @@ with source_all_casts_gold as (
     group by movie_id, person_id, job_id
 )
 
-select * from temp_result
+select movie_id as content_id, person_id, job_id, roles from temp_result

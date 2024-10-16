@@ -10,4 +10,4 @@ with source_content_aliases_iso_gold as (
 
 )
 
-select movie_id as id, language_iso_639_1, name, official_translation from source_content_aliases_iso_gold
+select movie_id as content_id, language_iso_639_1, name, official_translation from source_content_aliases_iso_gold

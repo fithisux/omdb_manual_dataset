@@ -10,4 +10,4 @@ with source_movie_references_cleansed as (
 
 )
 
-select * from source_movie_references_cleansed
+select movie_id as content_id, referenced_id, type from source_movie_references_cleansed

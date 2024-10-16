@@ -10,4 +10,4 @@ with source_has_keyword_gold as (
 
 )
 
-select * from source_has_keyword_gold
+select movie_id as content_id, category_id from source_has_keyword_gold
