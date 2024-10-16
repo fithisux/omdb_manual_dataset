@@ -10,8 +10,6 @@ models:
             - movie_id
             - person_id
             - job_id
-            - role # should not be here, in 3 cases it is necessary
-            - position
     columns:
       - name: movie_id
         description: "alphanumeric unique identifier of the movie"
@@ -34,9 +32,5 @@ models:
           - relationships:
               to: ref('job_names_gold')
               field: job_id
-      - name: role
+      - name: roles
         description: "the role of the person"
-      - name: position
-        description: "the role of the person"
-        tests:
-          - not_null
