@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-with source_category_has_parent_edges as (
+with source_category_has_root_edges as (
 
     select
 
@@ -13,4 +13,4 @@ with source_category_has_parent_edges as (
 
 )
 
-select * from source_category_has_parent_edges
+select * from source_category_has_root_edges

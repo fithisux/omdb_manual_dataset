@@ -10,4 +10,4 @@ with source_content_link_nodes as (
 
 )
 
-select * from source_content_links_nodes
+select * from source_content_link_nodes

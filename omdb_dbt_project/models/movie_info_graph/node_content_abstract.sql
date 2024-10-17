@@ -10,4 +10,4 @@ with source_content_abstract_nodes as (
 
 )
 
-select * from source_content_abstract_gold
+select * from source_content_abstract_nodes

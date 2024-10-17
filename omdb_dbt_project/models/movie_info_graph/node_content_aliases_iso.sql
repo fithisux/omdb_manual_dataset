@@ -6,7 +6,7 @@ with source_content_aliases_iso_nodes as (
 
     *
     
-    FROM {{ ref('content_alisases_iso_gold') }}
+    FROM {{ ref('content_aliases_iso_gold') }}
 
 )
 

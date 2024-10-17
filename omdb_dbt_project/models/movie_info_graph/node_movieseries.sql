@@ -6,7 +6,7 @@ with source_content_movieseries_gold as (
 
     *
     
-    FROM {{ ref('content_moviesereis_gold') }}
+    FROM {{ ref('content_movieseries_gold') }}
 
 )
 

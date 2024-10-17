@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-with source_movies_nodes as (
+with source_has_movieseries as (
 
     select
 
@@ -11,4 +11,4 @@ with source_movies_nodes as (
 
 )
 
-select * from source_movie_nodes
+select * from source_has_movieseries

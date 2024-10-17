@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-with source_movies_nodes as (
+with source_is_content as (
 
     select
 
@@ -10,4 +10,4 @@ with source_movies_nodes as (
 
 )
 
-select * from source_movie_nodes
+select * from source_is_content

@@ -9,4 +9,4 @@ with source_has_person_linkedges as (
     FROM {{ ref('content_links_gold') }}
 )
 
-select * from source_person_link_nodes
+select * from source_has_person_linkedges

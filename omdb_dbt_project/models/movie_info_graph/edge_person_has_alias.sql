@@ -4,7 +4,7 @@ with source_person_alias_nodes as (
 
     select
 
-    person_id as src_person_id, person_id as dst_person_id, name
+    person_id as src_person_id, person_id as dst_person_id, name as dst_name
     
     FROM {{ ref('all_people_aliases_gold') }}
 
