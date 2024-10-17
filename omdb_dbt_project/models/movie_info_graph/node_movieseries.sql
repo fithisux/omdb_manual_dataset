@@ -4,10 +4,9 @@ with source_content_movieseries_gold as (
 
     select
 
-    id
+    *
     
-    FROM {{ ref('content_gold') }}
-    where content_type='movieseries'
+    FROM {{ ref('content_moviesereis_gold') }}
 
 )
 
