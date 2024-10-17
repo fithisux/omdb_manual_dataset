@@ -6,7 +6,7 @@ with source_movies_nodes as (
 
     id as src_id, id as dst_id
     
-    FROM {{ ref('content_series_gold') }}
+    FROM {{ ref('content_episode_gold') }}
     where parent_id is not null
 
 )

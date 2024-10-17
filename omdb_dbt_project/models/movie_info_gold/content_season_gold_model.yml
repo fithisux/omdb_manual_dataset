@@ -19,5 +19,5 @@ models:
         description: "The series and seasons which contain this"
         tests:
            - relationships:
-              to: ref('content_Series_gold')
+              to: ref('content_series_gold')
               field: id
