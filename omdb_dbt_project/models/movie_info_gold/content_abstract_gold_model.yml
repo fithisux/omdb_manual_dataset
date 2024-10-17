@@ -3,6 +3,11 @@ version: 2
 models:
   - name: content_abstract_gold
     description: "Content abstracts"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - lang
     columns:
       - name: content_id
         description: "alphanumeric unique identifier of the movie"
