@@ -16,5 +16,6 @@ models:
       - name: lang
         description: "language"
         tests:
+        - not_null
         - accepted_values:
               values: ['es', 'en', 'de', 'fr']
