@@ -4,6 +4,11 @@ version: 2
 models:
   - name: all_people_aliases_gold
     description: "All movies"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - person_id
+            - name
     columns:
       - name: person_id
         description: "alphanumeric unique identifier of the person, some people have only aliases"
