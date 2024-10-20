@@ -20,7 +20,9 @@ models:
         description: "The image version"
       - name: source
         description: "The scource of image, a url"
-      - name: licence_id
+      - name: license_id
         description: "Type of license"
+        tests:
+          - not_null
       - name: author
         description: "The author of license"
