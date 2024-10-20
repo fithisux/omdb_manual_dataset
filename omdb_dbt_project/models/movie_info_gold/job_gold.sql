@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-with source_job_names_gold as (
+with source_job_gold as (
 
     select
 
@@ -10,4 +10,4 @@ with source_job_names_gold as (
 
 )
 
-select * from source_job_names_gold
+select * from source_job_gold

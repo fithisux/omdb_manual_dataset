@@ -6,7 +6,7 @@ with source_content_references_nodes as (
 
     distinct *
     
-    FROM {{ ref('content_references_gold') }}
+    FROM {{ ref('content_reference_gold') }}
 
 )
 

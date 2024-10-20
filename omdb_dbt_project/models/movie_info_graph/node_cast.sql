@@ -7,7 +7,7 @@ with source_all_casts_node as (
 
     *
     
-    FROM {{ref('all_casts_gold')}}
+    FROM {{ref('cast_gold')}}
 )
 
 select * from source_all_casts_node

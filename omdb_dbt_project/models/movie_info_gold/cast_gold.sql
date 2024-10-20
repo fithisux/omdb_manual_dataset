@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 
-with source_all_casts_gold as (
+with source_cast_gold as (
 
     select
 
@@ -13,7 +13,7 @@ with source_all_casts_gold as (
 
     movie_id, person_id, job_id, array_agg(role) as roles
 
-    from source_all_casts_gold
+    from source_cast_gold
 
     group by movie_id, person_id, job_id
 )

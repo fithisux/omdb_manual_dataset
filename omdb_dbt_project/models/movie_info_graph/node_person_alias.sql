@@ -6,7 +6,7 @@ with source_person_alias_nodes as (
 
     *
     
-    FROM {{ ref('all_people_aliases_gold') }}
+    FROM {{ ref('person_alias_gold') }}
 
 )
 

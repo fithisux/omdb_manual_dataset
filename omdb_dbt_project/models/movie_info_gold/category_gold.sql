@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-with source_all_categories_gold as (
+with source_category_gold as (
 
     select
 
@@ -9,4 +9,4 @@ with source_all_categories_gold as (
     FROM {{ref('all_categories_cleansed')}}
 )
 
-select * from source_all_categories_gold
+select * from source_category_gold

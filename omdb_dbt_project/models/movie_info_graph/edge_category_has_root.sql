@@ -7,7 +7,7 @@ with source_category_has_root_edges as (
     
     category_id as src_category_id, root_id as dst_category_id
     
-    FROM {{ ref('all_categories_gold') }}
+    FROM {{ ref('category_gold') }}
 
     where root_id is not null
 

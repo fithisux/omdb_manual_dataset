@@ -6,7 +6,7 @@ with source_category_name_nodes as (
 
     *
     
-    FROM {{ ref('category_names_gold') }}
+    FROM {{ ref('category_name_gold') }}
 
 )
 

@@ -3,6 +3,11 @@ version: 2
 models:
   - name: content_has_country_gold
     description: "Movie categorization"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - country_code  
     columns:
       - name: content_id
         description: "alphanumeric unique identifier of the movie"

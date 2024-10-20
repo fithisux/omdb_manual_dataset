@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: all_categories_gold
+  - name: category_gold
     description: "All categories"
     columns:
       - name: category_id
@@ -18,11 +18,11 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_categories_gold')
+              to: ref('category_gold')
               field: category_id
       - name: parent_id
         description: "the parent category"
         tests:
           - relationships:
-              to: ref('all_categories_gold')
+              to: ref('category_gold')
               field: category_id

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: content_links_gold
+  - name: content_content_link_gold
     description: "Movie categorization through links"
     tests:
       - dbt_utils.unique_combination_of_columns:

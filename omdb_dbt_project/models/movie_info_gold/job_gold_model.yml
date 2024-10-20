@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: job_names_gold
+  - name: job_gold
     description: Job names"
     tests:
       - dbt_utils.unique_combination_of_columns:

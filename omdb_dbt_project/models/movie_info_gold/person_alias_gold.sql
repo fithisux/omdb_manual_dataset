@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-with source_all_people_aliases_gold as (
+with source_person_alias_gold as (
 
     select
 
@@ -10,4 +10,4 @@ with source_all_people_aliases_gold as (
 
 )
 
-select * from source_all_people_aliases_gold
+select * from source_person_alias_gold

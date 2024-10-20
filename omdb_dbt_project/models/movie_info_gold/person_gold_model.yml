@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: all_people_gold
+  - name: person_gold
     description: "All people"
     columns:
       - name: person_id

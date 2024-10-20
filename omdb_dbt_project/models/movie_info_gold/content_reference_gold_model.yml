@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: content_references_gold
+  - name: content_reference_gold
     description: "Movie categorization through references"
     tests:
       - dbt_utils.unique_combination_of_columns:

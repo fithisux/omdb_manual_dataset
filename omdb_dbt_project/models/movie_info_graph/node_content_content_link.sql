@@ -6,7 +6,7 @@ with source_content_link_nodes as (
 
     *
     
-    FROM {{ ref('content_links_gold') }}
+    FROM {{ ref('content_content_link_gold') }}
 
 )
 

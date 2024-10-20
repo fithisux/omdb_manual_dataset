@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: all_casts_gold
+  - name: cast_gold
     description: "The casts of the movies"
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -23,14 +23,14 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('all_people_gold')
+              to: ref('person_gold')
               field: person_id
       - name: job_id
         description: "what job was assigned to person"
         tests:
           - not_null
           - relationships:
-              to: ref('job_names_gold')
+              to: ref('job_gold')
               field: job_id
       - name: roles
         description: "the role of the person"

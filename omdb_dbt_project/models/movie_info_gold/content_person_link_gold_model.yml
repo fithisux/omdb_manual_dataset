@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: content_people_links_gold
+  - name: content_person_link_gold
     description: "Content people eople categorization through links"
     tests:
       - dbt_utils.unique_combination_of_columns:

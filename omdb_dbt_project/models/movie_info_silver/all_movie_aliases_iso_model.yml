@@ -4,6 +4,12 @@ version: 2
 models:
   - name: all_movie_aliases_iso_cleansed
     description: "All movie aliasess"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - name
+            - language_iso_639_1
     columns:
       - name: movie_id
         description: "alphanumeric unique identifier of the movie, some of them have only aliases and filter them out"
