@@ -4,7 +4,7 @@ with source_content_references_nodes as (
 
     select
 
-    distinct *
+    distinct referenced_id, type
     
     FROM {{ ref('content_reference_gold') }}
 

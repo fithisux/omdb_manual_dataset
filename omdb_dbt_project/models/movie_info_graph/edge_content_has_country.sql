@@ -4,7 +4,7 @@ with source_content_has_countries_edges as (
 
     select
 
-    content_id as src_content_id, content_id as dst_content_id, country_code as dst_country_code
+    content_id as src_country_id, country_code as dst_alpha2
     
     FROM {{ ref('content_has_country_gold') }}
 
