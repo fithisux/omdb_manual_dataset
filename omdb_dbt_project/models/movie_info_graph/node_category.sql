@@ -4,9 +4,9 @@ with source_category_name_nodes as (
 
     select
 
-    distinct name, language_iso_639_1
+    category_id
     
-    FROM {{ ref('category_name_gold') }}
+    FROM {{ ref('category_gold') }}
 
 )
 
