@@ -4,7 +4,7 @@ with source_has_alias_edges as (
 
     select
 
-    content_id as src_content_id, language_iso_639_1 as dst_language_iso_639_1, name as dst_name
+    content_id as src_content_id, language_iso_639_1 as dst_language_iso_639_1, name as dst_name, official_translation as dst_official_translation
     
     FROM {{ ref('content_alias_gold') }}
 )
