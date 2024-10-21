@@ -4,7 +4,7 @@ with source_has_person_linkedges as (
 
     select
 
-    content_id as src_content_id, language_iso_639_1 as dst_language_iso_639_1, source as dst_source
+    content_id as src_content_id, language_iso_639_1 as dst_language_iso_639_1, source as dst_source, key as dst_key
     
     FROM {{ ref('content_content_link_gold') }}
 )
