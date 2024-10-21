@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: content_aliases_iso_gold
+  - name: content_alias_gold
     description: "All movie aliasess"
     tests:
     - dbt_utils.unique_combination_of_columns:
