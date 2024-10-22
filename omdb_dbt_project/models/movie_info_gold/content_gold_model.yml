@@ -5,8 +5,8 @@ models:
     description: "All content"
     tests:
           - both_null_or_not_null:
-              column1: votes_count
-              column2: vote_average
+              column_name: votes_count
+              column_name2: vote_average
     columns:
       - name: content_id
         description: "alphanumeric unique identifier of the movie"

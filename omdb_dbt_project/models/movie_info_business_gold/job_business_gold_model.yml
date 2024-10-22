@@ -13,10 +13,10 @@ models:
         description: "the parent category"
         tests:
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_field_is_not_null:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
           - array_struct_field_is_not_null:
-              field: name
+              field_name: name

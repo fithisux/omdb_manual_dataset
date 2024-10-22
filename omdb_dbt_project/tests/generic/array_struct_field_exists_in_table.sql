@@ -1,8 +1,8 @@
-{% test array_struct_field_exists_in_table(model1, column1, field, model2, column2) %}
+{% test array_struct_field_exists_in_table(model, column_name, field_name, model2, column_name2) %}
 
 with exploded as (
-    select unnest({{column1}}) as temp
-    from {{model1}}
+    select unnest({{column_name}}) as temp
+    from {{model}}
 ), selection as (
     select (temp).{{field}} as left_id
     from exploded

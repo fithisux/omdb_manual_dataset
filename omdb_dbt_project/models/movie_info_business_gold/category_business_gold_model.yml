@@ -28,9 +28,9 @@ models:
         tests:
           - not_null
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_2fields_are_not_null:
-              field1: name
-              field2: language_iso_639_1
+              field_name1: name
+              field_name2: language_iso_639_1

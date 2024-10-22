@@ -5,8 +5,8 @@ models:
     description: "All content"
     tests:
       - both_null_or_not_null:
-          column1: votes_count
-          column2: vote_average
+          column_name: votes_count
+          column_name2: vote_average
     columns:
       - name: content_id
         description: "alphanumeric unique identifier of the movie"
@@ -45,75 +45,75 @@ models:
         description: "the parent category"
         tests:
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_field_is_not_null:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
           - array_struct_field_is_not_null:
-              field: abstract
+              field_name: abstract
       - name: countries
         description: "the countries"
         tests:
           - array_column_exists_in_table:
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
       - name: categories
         description: "the categories"
         tests:
           - array_column_exists_in_table:
               model2: ref('category_business_gold')
-              column2: category_id
+              column_name2: category_id
       - name: keywords
         description: "the keywords"
         tests:
           - array_struct_field_exists_in_table:
               model2: ref('category_business_gold')
-              column2: category_id
+              column_name2: category_id
       - name: content_links
         description: "the content links"
         tests:
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_2fields_are_not_null:
-              field1: source
-              field2: key
+              field_name1: source
+              field_name2: key
       - name: person_links
         description: "the content links"
         tests:
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_2fields_are_not_null:
-              field1: source
-              field2: key
+              field_name1: source
+              field_name2: key
       - name: references
         description: "the content links"
         tests:
         - array_struct_field_is_not_null:
-              field: referenced_id
+              field_name: referenced_id
       - name: trailers
         description: "the content links"
         tests:
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_3fields_are_not_null:
-              field1: language_iso_639_1
-              field2: source
-              field3: key
+              field_name1: language_iso_639_1
+              field_name2: source
+              field_name3: key
       - name: aliases
         description: "the content links"
         tests:
           - array_struct_field_exists_in_table:
-              field: language_iso_639_1
+              field_name: language_iso_639_1
               model2: ref('language_codes')
-              column2: alpha2
+              column_name2: alpha2
           - array_struct_3fields_are_not_null:
-              field1: language_iso_639_1
-              field2: name
-              field3: official_translation
+              field_name1: language_iso_639_1
+              field_name2: name
+              field_name3: official_translation

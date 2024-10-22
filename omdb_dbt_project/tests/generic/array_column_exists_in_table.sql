@@ -1,8 +1,8 @@
-{% test array_column_exists_in_table(model1, array_column1, model2, column2) %}
+{% test array_column_exists_in_table(model, column_name, model2, column_name2) %}
 
 with exploded as (
-    select unnest({{array_column1}}) as left_id
-    from {{model1}}
+    select unnest({{column_name}}) as left_id
+    from {{model}}
 ), relational as (
     select {{column2}} as right_id
     from {{model2}}

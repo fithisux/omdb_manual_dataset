@@ -1,6 +1,6 @@
-{% test both_null_or_not_null(model, column1, column2) %}
+{% test both_null_or_not_null(model, column_name, column_name2) %}
 
 select *
 from {{model}}
-where ( {{column1}} is not null and {{column2}} is null) or ({{column2}} is not null and {{column1}} is null)
+where ( {{column_name}} is not null and {{column_name2}} is null) or ({{column_name2}} is not null and {{column_name}} is null)
 {% endtest %}
