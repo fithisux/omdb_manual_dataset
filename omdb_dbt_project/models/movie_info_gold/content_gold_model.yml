@@ -3,6 +3,10 @@ version: 2
 models:
   - name: content_gold
     description: "All content"
+    tests:
+          - both_null_or_not_null:
+              column1: votes_count
+              column2: vote_average
     columns:
       - name: content_id
         description: "alphanumeric unique identifier of the movie"

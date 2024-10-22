@@ -7,7 +7,7 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - content_id
-            - lang
+            - language_iso_639_1
     columns:
       - name: content_id
         description: "alphanumeric unique identifier of the movie"

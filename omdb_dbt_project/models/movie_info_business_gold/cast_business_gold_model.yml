@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: cast_business_gold
+    description: "The casts of the movies"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - person_id
+            - job_id
+    columns:
+      - name: content_id
+        description: "alphanumeric unique identifier of the movie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('content_business_gold')
+              field: content_id
+      - name: person_id
+        description: "person of the cast"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('person_business_gold')
+              field: person_id
+      - name: job_id
+        description: "what job was assigned to person"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('job_business_gold')
+              field: job_id
+      - name: roles
+        description: "the role of the person"
