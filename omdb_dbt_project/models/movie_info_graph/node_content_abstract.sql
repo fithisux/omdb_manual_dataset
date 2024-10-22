@@ -4,7 +4,7 @@ with source_content_abstract_nodes as (
 
     select
 
-    distinct lang, abstract
+    distinct language_iso_639_1, abstract
     
     FROM {{ ref('content_abstract_gold') }}
 
