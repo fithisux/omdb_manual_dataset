@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: content_trailers_gold
+  - name: content_trailer_gold
     description: "Trailers categorization through links"
     tests:
       - dbt_utils.unique_combination_of_columns:

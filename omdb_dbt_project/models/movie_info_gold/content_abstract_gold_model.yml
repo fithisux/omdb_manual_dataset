@@ -18,6 +18,8 @@ models:
               field: content_id
       - name: abstract
         description: "Movie abstract in English"
+        tests:
+          - not_null
       - name: language_iso_639_1
         description: "language"
         tests:

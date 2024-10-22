@@ -29,7 +29,7 @@ with source_source_all_content_gold as (
     FROM {{ref('content_person_link_gold')}}
     group by content_id
 ), content_references as (
-    select content_id, array_agg(ROW(type, referenced_id)::content_reference_type) as references
+    select content_id, array_agg(ROW(type, referenced_id)::content_reference_type) as refs
     FROM {{ref('content_reference_gold')}}
     group by content_id
 ), content_trailers as (
@@ -37,12 +37,12 @@ with source_source_all_content_gold as (
     FROM {{ref('content_trailer_gold')}}
     group by content_id
 ), content_aliases as (
-    select content_id, array_agg(ROW(name, language_iso_639_1, official_translation)::content_alias_type) as aliases
+    select content_id, array_agg(ROW(name, language_iso_639_1, official_translation)::content_alias_type) as aliasings
     FROM {{ref('content_alias_gold')}}
     group by content_id
 )
 
-select aa.*, bb.abstracts, cc.countries, dd.keywords, ee.categories, ff.content_links, gg.person_links, hh.references, ii.trailers, jj.aliases
+select aa.*, bb.abstracts, cc.countries, dd.keywords, ee.categories, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliasings
 from source_source_all_content_gold aa
 left join content_abstracts bb on aa.content_id=bb.content_id
 left join content_countries cc on aa.content_id=cc.content_id

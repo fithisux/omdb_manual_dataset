@@ -26,6 +26,8 @@ models:
               field: alpha2
       - name: name
         description: "the name of the episode in english us"
+        tests:
+          - not_null
       - name: official_translation
         description: "Is it an official translation"
         tests:

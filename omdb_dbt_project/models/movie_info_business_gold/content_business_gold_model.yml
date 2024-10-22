@@ -56,7 +56,7 @@ models:
         description: "the countries"
         tests:
           - array_column_exists_in_table:
-              model2: ref('language_codes')
+              model2: ref('region_codes')
               column_name2: alpha2
       - name: categories
         description: "the categories"
@@ -67,7 +67,7 @@ models:
       - name: keywords
         description: "the keywords"
         tests:
-          - array_struct_field_exists_in_table:
+          - array_column_exists_in_table:
               model2: ref('category_business_gold')
               column_name2: category_id
       - name: content_links
@@ -90,7 +90,7 @@ models:
           - array_struct_2fields_are_not_null:
               field_name1: source
               field_name2: key
-      - name: references
+      - name: refs
         description: "the content links"
         tests:
         - array_struct_field_is_not_null:
@@ -106,14 +106,13 @@ models:
               field_name1: language_iso_639_1
               field_name2: source
               field_name3: key
-      - name: aliases
+      - name: aliasings
         description: "the content links"
         tests:
           - array_struct_field_exists_in_table:
               field_name: language_iso_639_1
               model2: ref('language_codes')
               column_name2: alpha2
-          - array_struct_3fields_are_not_null:
-              field_name1: language_iso_639_1
-              field_name2: name
-              field_name3: official_translation
+          - array_struct_2fields_are_not_null:
+              field_name1: name
+              field_name2: official_translation

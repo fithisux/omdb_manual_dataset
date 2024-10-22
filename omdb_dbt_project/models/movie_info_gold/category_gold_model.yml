@@ -11,7 +11,7 @@ models:
           - unique
           - not_null
           - relationships:
-              to: ref('category_names_gold')
+              to: ref('category_name_gold')
               field: category_id
       - name: root_id
         description: "the category"

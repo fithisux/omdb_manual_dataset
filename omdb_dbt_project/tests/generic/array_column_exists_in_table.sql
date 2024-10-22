@@ -4,7 +4,7 @@ with exploded as (
     select unnest({{column_name}}) as left_id
     from {{model}}
 ), relational as (
-    select {{column2}} as right_id
+    select {{column_name2}} as right_id
     from {{model2}}
 )
 select *

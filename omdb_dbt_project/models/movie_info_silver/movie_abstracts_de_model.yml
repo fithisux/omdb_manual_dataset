@@ -14,3 +14,5 @@ models:
               field: movie_id
       - name: abstract
         description: "Movie abstract in German"
+        tests:
+          - not_null

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: content_has_keyword_gold_model
+  - name: content_has_keyword_gold
     description: "Movie categorization through keywords"
     tests:
       - dbt_utils.unique_combination_of_columns:

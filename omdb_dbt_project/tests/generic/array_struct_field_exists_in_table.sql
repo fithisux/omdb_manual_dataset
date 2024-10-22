@@ -1,13 +1,13 @@
 {% test array_struct_field_exists_in_table(model, column_name, field_name, model2, column_name2) %}
 
 with exploded as (
-    select unnest({{column_name}}) as temp
+    select unnest({{column_name}})  as temp
     from {{model}}
 ), selection as (
-    select (temp).{{field}} as left_id
+    select (temp).{{field_name}} as left_id
     from exploded
 ), relational as (
-    select {{column2}} as right_id
+    select {{column_name2}} as right_id
     from {{model2}}
 )
 select *
