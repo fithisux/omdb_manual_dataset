@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: gold_business_model
+  - name: gold_business_content
     description: "All content"
     data_tests:
       - both_null_or_not_null:
@@ -62,7 +62,7 @@ models:
         description: "the categories"
         data_tests:
           - array_column_exists_in_table:
-              model2: ref('category_business')
+              model2: ref('gold_business_category')
               column_name2: category_id
       - name: keywords
         description: "the keywords"

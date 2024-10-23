@@ -8,18 +8,6 @@ with source_source_all_content as (
     select content_id, array_agg(ROW(abstract, language_iso_639_1)::content_abstract_type) as abstracts
     FROM {{ref('gold_denormalized_content_abstract')}}
     group by content_id
-), content_countries as (
-    select content_id, array_agg(country_code) as countries
-    FROM {{ref('gold_denormalized_content_has_country')}}
-    group by content_id
-), content_keywords as (
-    select content_id, array_agg(category_id) as keywords
-    FROM {{ref('gold_denormalized_content_has_keyword')}}
-    group by content_id
-), content_categories as (
-    select content_id, array_agg(category_id) as categories
-    FROM {{ref('gold_denormalized_content_has_category')}}
-    group by content_id
 ), content_content_links as (
     select content_id, array_agg(ROW(source, key, language_iso_639_1)::content_link_type) as content_links
     FROM {{ref('gold_denormalized_content_content_link')}}
@@ -42,12 +30,9 @@ with source_source_all_content as (
     group by content_id
 )
 
-select aa.*, bb.abstracts, cc.countries, dd.keywords, ee.categories, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliasings
+select aa.*, bb.abstracts, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliasings
 from source_source_all_content aa
 left join content_abstracts bb on aa.content_id=bb.content_id
-left join content_countries cc on aa.content_id=cc.content_id
-left join content_keywords dd on aa.content_id=dd.content_id
-left join content_categories ee on aa.content_id=ee.content_id
 left join content_content_links ff on aa.content_id=ff.content_id
 left join content_person_links gg on aa.content_id=gg.content_id
 left join content_references hh on aa.content_id=hh.content_id

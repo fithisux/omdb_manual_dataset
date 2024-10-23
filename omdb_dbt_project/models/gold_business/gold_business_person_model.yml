@@ -25,3 +25,5 @@ models:
               values: [0, 1, 2, 3]
       - name: aliases
         description: "Different aliases"
+        data_tests:
+          - array_column_nonempty

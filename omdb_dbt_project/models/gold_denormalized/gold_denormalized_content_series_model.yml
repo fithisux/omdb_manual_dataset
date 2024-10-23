@@ -19,5 +19,5 @@ models:
         description: "The movie series"
         data_tests:
            - relationships:
-              to: ref('content_movieseries')
+              to: ref('gold_denormalized_content_movieseries')
               field: id

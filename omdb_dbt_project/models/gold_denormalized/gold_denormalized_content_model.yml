@@ -41,3 +41,23 @@ models:
         description: "The average rating"
       - name: votes_count
         description: "the count of votes"
+      - name: last_update
+        description: "the count of votes"
+      - name: countries
+        description: "the countries"
+        data_tests:
+          - array_column_exists_in_table:
+              model2: ref('region_codes')
+              column_name2: alpha2
+      - name: categories
+        description: "the categories"
+        data_tests:
+          - array_column_exists_in_table:
+              model2: ref('gold_denormalized_category')
+              column_name2: category_id
+      - name: keywords
+        description: "the keywords"
+        data_tests:
+          - array_column_exists_in_table:
+              model2: ref('gold_denormalized_category')
+              column_name2: category_id
