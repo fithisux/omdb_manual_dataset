@@ -1,0 +1,31 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_category_names
+    description: "Category names"
+    data_tests:
+    - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - category_id
+          - name
+          - language_iso_639_1
+    columns:
+      - name: category_id
+        description: "alphanumeric unique identifier of the series"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_all_categories')
+              field: id
+      - name: name
+        description: "The average rating"
+        data_tests:
+           - not_null
+      - name: language_iso_639_1
+        description: "The language"
+        data_tests:
+           - not_null
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2

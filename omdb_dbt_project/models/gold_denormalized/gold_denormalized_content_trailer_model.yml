@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: gold_denormalized_content_trailer
+    description: "Trailers categorization through links"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - language_iso_639_1  
+    columns:
+      - name: trailer_id
+        description: "alphanumeric unique identifier of the trailer"
+        data_tests:
+          - not_null
+          - unique
+      - name: content_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_denormalized_content')
+              field: content_id
+      - name: language_iso_639_1
+        description: "The language"
+        data_tests:
+           - not_null
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2
+      - name: source
+        description: "The source link"
+        data_tests:
+           - not_null
+      - name: key
+        description: "The person name"
+        data_tests:
+           - not_null

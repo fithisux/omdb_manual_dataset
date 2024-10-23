@@ -1,0 +1,42 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_casts
+    description: "The casts of the movies"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - person_id
+            - job_id
+            - role # should not be here, in 3 cases it is necessary
+            - position
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: person_id
+        description: "person of the cast"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_all_people')
+              field: id
+      - name: job_id
+        description: "what job was assigned to person"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_job_names')
+              field: job_id
+      - name: role
+        description: "the role of the person"
+      - name: position
+        description: "the role of the person"
+        data_tests:
+          - not_null

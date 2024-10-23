@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: gold_business_category
+    description: "All categories"
+    columns:
+      - name: category_id
+        description: "alphanumeric unique identifier of the category"
+        data_tests:
+          - unique
+          - not_null
+      - name: root_id
+        description: "the category"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_business_category')
+              field: category_id
+      - name: parent_id
+        description: "the parent category"
+        data_tests:
+          - relationships:
+              to: ref('gold_business_category')
+              field: category_id
+      - name: names
+        description: "the parent category"
+        data_tests:
+          - not_null
+          - array_struct_field_exists_in_table:
+              field_name: language_iso_639_1
+              model2: ref('language_codes')
+              column_name2: alpha2
+          - array_struct_2fields_are_not_null:
+              field_name1: name
+              field_name2: language_iso_639_1

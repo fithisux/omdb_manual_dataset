@@ -1,0 +1,34 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_movie_aliases_iso
+    description: "All movie aliasess"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - name
+            - language_iso_639_1
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie, some of them have only aliases and filter them out"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: language_iso_639_1
+        description: "The language"
+        data_tests:
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2
+      - name: name
+        description: "the name of the episode in english us"
+        data_tests:
+          - not_null
+      - name: official_translation
+        description: "Is it an official translation"
+        data_tests:
+          - not_null

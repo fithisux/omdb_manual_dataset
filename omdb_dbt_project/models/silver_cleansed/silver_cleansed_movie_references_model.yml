@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: silver_cleansed_movie_references
+    description: "Movie categorization through references"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - referenced_id
+            - type  
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: referenced_id
+        description: "The reference"
+        data_tests:
+           - not_null
+      - name: type
+        description: "The reference type"
+        data_tests:
+           - accepted_values:
+              values: ['Homage', 'Remake', 'Influence', 'SpinOff', 'Parody']

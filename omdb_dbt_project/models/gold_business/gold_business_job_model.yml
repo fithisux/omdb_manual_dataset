@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: gold_business_job
+    description: Job names"
+    columns:
+      - name: job_id
+        description: "alphanumeric unique identifier of the images"
+        data_tests:
+          - unique
+          - not_null
+      - name: names
+        description: "the parent category"
+        data_tests:
+          - array_struct_field_exists_in_table:
+              field_name: language_iso_639_1
+              model2: ref('language_codes')
+              column_name2: alpha2
+          - array_struct_field_is_not_null:
+              field_name: language_iso_639_1
+          - array_struct_field_is_not_null:
+              field_name: name

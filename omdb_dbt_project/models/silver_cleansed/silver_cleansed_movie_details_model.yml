@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: silver_cleansed_movie_details
+    description: "Movie details" 
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: runtime
+        description: "runtime of movie"
+        data_tests:
+          - not_null
+      - name: budget
+        description: "budget of movie"
+      - name: revenue
+        description: "revenue of movie"
+      - name: homepage
+        description: "homepage of movie"
+      

@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_categories
+    description: "All categories"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the category"
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_category_names')
+              field: category_id
+      - name: root_id
+        description: "the category"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_all_categories')
+              field: id
+      - name: parent_id
+        description: "the parent category"
+        data_tests:
+          - relationships:
+              to: ref('silver_cleansed_all_categories')
+              field: id

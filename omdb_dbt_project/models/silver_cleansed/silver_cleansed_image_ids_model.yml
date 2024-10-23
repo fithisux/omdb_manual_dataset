@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: silver_cleansed_image_ids
+    description: Image ids"
+    columns:
+      - name: image_id
+        description: "alphanumeric unique identifier of the images"
+        data_tests:
+          - unique
+          - not_null
+      - name: object_id
+        description: "The object id"
+      - name: object_type
+        description: "Type of object"
+        data_tests:
+          - accepted_values:
+              values: ['Person', 'Movie', 'Character', 'Job', 'Company', 'Category', 'User', 'Globalize::Country']
+      - name: image_version
+        description: "The image version"

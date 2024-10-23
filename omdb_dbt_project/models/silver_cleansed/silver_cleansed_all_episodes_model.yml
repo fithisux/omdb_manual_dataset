@@ -1,0 +1,43 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_episodes
+    description: "All categories"
+    data_tests:
+      - dbt_utils.expression_is_true:
+          expression: "coalesce(provided_series_id, series_id) = series_id"
+    columns:
+      - name: id
+        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        data_tests:
+           - unique
+           - not_null
+      - name: parent_id
+        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        data_tests:
+           - relationships:
+              to: ref('with_cleansing_all_ids_of_series')
+              field: id
+      - name: series_id
+        description: "The series id"
+        data_tests:
+           - relationships:
+              to: ref('silver_cleansed_all_series')
+              field: id
+      - name: provided_series_id
+        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        data_tests:
+           - relationships:
+              to: ref('silver_cleansed_all_series')
+              field: id
+      - name: season_id
+        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        data_tests:
+           - relationships:
+              to: ref('silver_cleansed_all_seasons')
+              field: id
+      - name: name
+        description: "the name of the episode in english us"
+      - name: date
+        description: "I suspect the production date"

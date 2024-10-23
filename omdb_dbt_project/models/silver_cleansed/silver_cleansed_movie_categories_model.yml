@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: silver_cleansed_movie_categories
+    description: "Movie categorization"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - category_id  
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: category_id
+        description: "alphanumeric unique identifier of the category"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_category_names')
+              field: category_id

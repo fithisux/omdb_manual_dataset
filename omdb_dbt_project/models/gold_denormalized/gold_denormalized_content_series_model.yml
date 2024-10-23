@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: gold_denormalized_content_series
+    description: "All series"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the series"
+        data_tests:
+          - not_null
+          - unique
+          - dbt_utils.relationships_where:
+              to: ref('gold_denormalized_content')
+              field: content_id
+              from_condition: true
+              to_condition: content_type = 'series'
+      - name: parent_id
+        description: "The movie series"
+        data_tests:
+           - relationships:
+              to: ref('content_movieseries')
+              field: id

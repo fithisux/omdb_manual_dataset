@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: gold_denormalized_cast
+    description: "The casts of the movies"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - person_id
+            - job_id
+    columns:
+      - name: content_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_denormalized_content')
+              field: content_id
+      - name: person_id
+        description: "person of the cast"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_denormalized_person')
+              field: person_id
+      - name: job_id
+        description: "what job was assigned to person"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_denormalized_job')
+              field: job_id
+      - name: roles
+        description: "the role of the person"

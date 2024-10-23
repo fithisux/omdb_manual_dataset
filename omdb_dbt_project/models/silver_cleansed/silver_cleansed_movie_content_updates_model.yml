@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: silver_cleansed_movie_content_updates
+    description: "Movie categorization"
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: last_update
+        description: "when last update happened"
+        data_tests:
+          - not_null

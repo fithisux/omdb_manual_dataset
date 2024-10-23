@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_people_aliases
+    description: "All movies"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - person_id
+            - name
+    columns:
+      - name: person_id
+        description: "alphanumeric unique identifier of the person, some people have only aliases"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('silver_cleansed_all_people')
+              field: id
+      - name: name
+        description: "The person"
+        data_tests:
+           - not_null

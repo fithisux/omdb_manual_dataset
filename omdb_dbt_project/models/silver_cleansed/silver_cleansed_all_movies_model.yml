@@ -1,0 +1,22 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_movies
+    description: "All movies"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - unique
+      - name: parent_id
+        description: "The movie series"
+        data_tests:
+          - relationships:
+              to: ref('silver_cleansed_all_movieseries')
+              field: id
+      - name: name
+        description: "the name of the movie in english us"
+      - name: date
+        description: "I suspect the production date"

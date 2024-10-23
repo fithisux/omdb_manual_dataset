@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: silver_cleansed_movie_links
+    description: "Movie categorization through links"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - movie_id
+            - language_iso_639_1
+            - source 
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: language_iso_639_1
+        description: "The language"
+        data_tests:
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2
+      - name: source
+        description: "The source link"
+        data_tests:
+           - not_null
+      - name: key
+        description: "The movie name"
+        data_tests:
+           - not_null

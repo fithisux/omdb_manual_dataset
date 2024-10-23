@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: gold_denormalized_category
+    description: "All categories"
+    columns:
+      - name: category_id
+        description: "alphanumeric unique identifier of the category"
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('gold_denormalized_category_name')
+              field: category_id
+      - name: root_id
+        description: "the category"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_denormalized_category')
+              field: category_id
+      - name: parent_id
+        description: "the parent category"
+        data_tests:
+          - relationships:
+              to: ref('gold_denormalized_category')
+              field: category_id

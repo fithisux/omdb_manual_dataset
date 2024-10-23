@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_votes
+    description: "All votes"
+    columns:
+      - name: movie_id
+        description: "alphanumeric unique identifier of the series"
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('with_cleansing_all_ids_of_original_movies_and_series')
+              field: movie_id
+      - name: vote_average
+        description: "The average rating"
+        data_tests:
+           - not_null
+      - name: votes_count
+        description: "the count of votes"
+        data_tests:
+           - not_null

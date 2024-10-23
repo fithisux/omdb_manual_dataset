@@ -1,0 +1,14 @@
+
+version: 2
+
+models:
+  - name: silver_cleansed_all_characters
+    description: "All categories"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the character"
+        data_tests:
+          - unique
+          - not_null
+      - name: name
+        description: "the name of the character"
