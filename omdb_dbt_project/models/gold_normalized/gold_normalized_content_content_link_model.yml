@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: gold_normalized_content_content_link
+    description: "Movie categorization through links"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - language_iso_639_1
+            - source 
+    columns:
+      - name: content_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_normalized_content')
+              field: content_id
+      - name: language_iso_639_1
+        description: "The language"
+        data_tests:
+           - relationships:
+              to: ref('language_codes')
+              field: alpha2
+      - name: source
+        description: "The source link"
+        data_tests:
+           - not_null
+      - name: key
+        description: "The movie name"
+        data_tests:
+           - not_null

@@ -7,7 +7,7 @@ with source_cast as (
 
     *
     
-    FROM {{ref('gold_denormalized_cast')}}
+    FROM {{ref('gold_normalized_cast')}}
 )
 
 select * from source_cast

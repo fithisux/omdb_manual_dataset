@@ -4,7 +4,7 @@ with source_all_characters as (
 
     select
 
-    *
+    id, name
     
     FROM {{ ref('gold_normalized_character') }}
 

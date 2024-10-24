@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: gold_normalized_content_season
+    description: "All seasons"
+    columns:
+      - name: id
+        description: "alphanumeric unique identifier of the seasons"
+        data_tests:
+          - not_null
+          - unique
+          - dbt_utils.relationships_where:
+              to: ref('gold_normalized_content')
+              field: content_id
+              from_condition: true
+              to_condition: content_type = 'season'
+      - name: parent_id
+        description: "The series and seasons which contain this"
+        data_tests:
+           - relationships:
+              to: ref('gold_normalized_content_series')
+              field: id

@@ -1,0 +1,29 @@
+
+version: 2
+
+models:
+  - name: gold_normalized_person
+    description: "All people"
+    columns:
+      - name: person_id
+        description: "alphanumeric unique identifier of the person"
+        data_tests:
+          - not_null
+          - unique
+      - name: name
+        description: "The person"
+        data_tests:
+           - not_null
+      - name: birthday
+        description: "Birth day"
+      - name: deathday
+        description: "Death day"
+      - name: gender
+        description: "0 female, 1 male, 2 other, 3 queer, NULL not specified"
+        data_tests:
+        - accepted_values:
+              values: [0, 1, 2, 3]
+      - name: aliases
+        description: "Different aliases"
+        data_tests:
+          - array_column_nonempty

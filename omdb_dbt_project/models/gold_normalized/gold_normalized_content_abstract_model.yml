@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: gold_normalized_content_abstract
+    description: "Content abstracts"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - content_id
+            - language_iso_639_1
+    columns:
+      - name: content_id
+        description: "alphanumeric unique identifier of the movie"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('gold_normalized_content')
+              field: content_id
+      - name: abstract
+        description: "Movie abstract in English"
+        data_tests:
+          - not_null
+      - name: language_iso_639_1
+        description: "language"
+        data_tests:
+        - not_null
+        - accepted_values:
+              values: ['es', 'en', 'de', 'fr']
