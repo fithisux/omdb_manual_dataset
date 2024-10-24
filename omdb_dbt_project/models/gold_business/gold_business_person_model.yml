@@ -19,10 +19,10 @@ models:
       - name: deathday
         description: "Death day"
       - name: gender
-        description: "0 female, 1 male, 2 other, 3 queer, NULL not specified"
+        description: "0 male, 1 female, 2 nobinary, 3 animal, NULL not specified"
         data_tests:
         - accepted_values:
-              values: [0, 1, 2, 3]
+              values: ['male', 'female', 'nonbinary','animal', 'unspecified']
       - name: aliases
         description: "Different aliases"
         data_tests:
