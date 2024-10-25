@@ -13,18 +13,6 @@ models:
         data_tests:
           - not_null
           - unique
-      - name: parent_id
-        description: "The self references"
-        data_tests:
-          - relationships:
-              to: ref('gold_normalized_content')
-              field: content_id
-      - name: content_type
-        description: "the content type"
-        data_tests:
-          - not_null
-          - accepted_values:
-              values: ['episode', 'season', 'movie', 'series', 'movieseries']
       - name: name
         description: "the name of the movie in english us"
       - name: date

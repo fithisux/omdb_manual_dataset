@@ -4,9 +4,9 @@ with source_has_movieseries_edges as (
 
     select
 
-    movie_id as src_content_id, movieseries_id as dst_content_id
+    movie_id as src_movie_id, movieseries_id as dst_movieseries_id
     
-    FROM {{ ref('gold_normalized_content_movie') }}
+    FROM {{ ref('gold_business_movie') }}
     where movieseries_id is not null
 
 )

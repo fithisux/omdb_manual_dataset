@@ -5,19 +5,17 @@ models:
   - name: gold_normalized_content_movie
     description: "All movies"
     columns:
-      - name: id
+      - name: movie_id
         description: "alphanumeric unique identifier of the movie"
         data_tests:
           - not_null
           - unique
-          - dbt_utils.relationships_where:
+          - relationships:
               to: ref('gold_normalized_content')
               field: content_id
-              from_condition: true
-              to_condition: content_type = 'movie'
-      - name: parent_id
+      - name: movieseries_id
         description: "The movie series"
         data_tests:
           - relationships:
               to: ref('gold_normalized_content_movieseries')
-              field: id
+              field: movieseries_id

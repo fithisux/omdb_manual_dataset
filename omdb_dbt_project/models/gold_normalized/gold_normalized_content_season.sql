@@ -4,11 +4,9 @@ with source_content_season as (
 
     select
 
-    content_id as id, parent_id
+    id as season_id, parent_id as series_id
     
-    FROM {{ ref('gold_normalized_content') }}
-
-    where content_type='season'
+    FROM {{ ref('silver_cleansed_all_seasons') }}
 
 )
 

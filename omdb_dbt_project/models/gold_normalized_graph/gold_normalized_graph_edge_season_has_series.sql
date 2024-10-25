@@ -4,10 +4,10 @@ with source_has_series as (
 
     select
 
-    id as src_id, id as dst_id
+    season_id as src_content_id, series_id as dst_content_id
     
     FROM {{ ref('gold_normalized_content_season') }}
-    where parent_id is not null
+    where series_id is not null
 
 )
 

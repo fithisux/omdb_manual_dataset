@@ -4,11 +4,9 @@ with source_content_movieseries as (
 
     select
 
-    content_id as id
+    id as movieseries_id
     
-    FROM {{ ref('gold_normalized_content') }}
-    where content_type='movieseries'
-
+    FROM {{ ref('silver_cleansed_all_movieseries') }}
 )
 
 select * from source_content_movieseries

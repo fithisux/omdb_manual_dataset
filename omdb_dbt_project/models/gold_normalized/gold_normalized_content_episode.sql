@@ -3,7 +3,7 @@
 with source_content_episode as (
 
     select
-    id, provided_series_id as series_id, season_id
+    id as episode_id, provided_series_id as series_id, season_id
     FROM {{ ref('silver_cleansed_all_episodes') }}
 )
 

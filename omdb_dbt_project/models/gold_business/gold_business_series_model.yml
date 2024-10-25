@@ -1,30 +1,27 @@
 version: 2
 
 models:
-  - name: gold_business_content
-    description: "All content"
+  - name: gold_business_series
+    description: "Series"
     data_tests:
       - both_null_or_not_null:
           column_name: votes_count
           column_name2: vote_average
     columns:
-      - name: content_id
-        description: "alphanumeric unique identifier of the movie"
+      - name: series_id
+        description: "alphanumeric unique identifier of the series"
         data_tests:
           - not_null
           - unique
-      - name: parent_id
-        description: "The self references"
-        data_tests:
           - relationships:
               to: ref('gold_business_content')
               field: content_id
-      - name: content_type
-        description: "the content type"
+      - name: movieseries_id
+        description: "The movieseries"
         data_tests:
-          - not_null
-          - accepted_values:
-              values: ['episode', 'season', 'movie', 'series', 'movieseries']
+          - relationships:
+              to: ref('gold_business_movieseries')
+              field: movieseries_id
       - name: name
         description: "the name of the movie in english us"
       - name: date

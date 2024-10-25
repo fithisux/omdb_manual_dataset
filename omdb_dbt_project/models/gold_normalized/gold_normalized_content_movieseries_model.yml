@@ -1,17 +1,14 @@
-
 version: 2
 
 models:
   - name: gold_normalized_content_movieseries
     description: "All movie series"
     columns:
-      - name: id
+      - name: movieseries_id
         description: "alphanumeric unique identifier of the movie series"
         data_tests:
           - not_null
           - unique
-          - dbt_utils.relationships_where:
+          - relationships:
               to: ref('gold_normalized_content')
               field: content_id
-              from_condition: true
-              to_condition: content_type = 'movieseries'

@@ -30,7 +30,9 @@ with source_source_all_content as (
     group by content_id
 )
 
-select aa.*, bb.abstracts, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliasings
+select 
+aa.*,
+bb.abstracts, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliasings
 from source_source_all_content aa
 left join content_abstracts bb on aa.content_id=bb.content_id
 left join content_content_links ff on aa.content_id=ff.content_id
