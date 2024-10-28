@@ -5,7 +5,7 @@ with source_cast as (
 
     select
 
-    distinct movie_id, person_id, job_id, role
+    distinct movie_id, person_id, job_id, coalesce(role, '') as role
     
     FROM {{ref('silver_cleansed_all_casts')}}
 ), temp_result as (
