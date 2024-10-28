@@ -4,7 +4,7 @@ with source_has_season as (
 
     select
 
-    aa.content_id as from, bb.parent_id as to
+    aa.content_id as from, aa.parent_id as to
     
     FROM {{ ref('gold_business_content') }} aa
     inner join {{ ref('gold_business_content') }} bb
