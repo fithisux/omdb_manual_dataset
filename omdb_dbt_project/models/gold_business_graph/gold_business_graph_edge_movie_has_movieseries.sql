@@ -1,14 +1,14 @@
 {{ config(materialized='table') }}
 
-with source_has_movieseries_edges as (
-
+with source_has_movie_edges as (
+    
     select
 
-    movie_id as src_movie_id, movieseries_id as dst_movieseries_id
+    content_id as from, parent_id as to
     
-    FROM {{ ref('gold_business_movie') }}
-    where movieseries_id is not null
+    FROM {{ ref('gold_business_content') }}
+    where parent_id is not null and content_type='movie'
 
 )
 
-select * from source_has_movieseries_edges
+select * from source_has_movie_edges

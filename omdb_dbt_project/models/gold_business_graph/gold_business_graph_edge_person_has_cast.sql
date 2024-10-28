@@ -4,7 +4,7 @@ with source_person_has_cast_edges as (
 
     select
 
-    person_id as src_person_id, (content_id::varchar || '_' || person_id::varchar || '_' || job_id::varchar ) as dst_cast_id
+    person_id as from, (content_id::varchar || '_' || person_id::varchar || '_' || job_id::varchar ) as to
     
     FROM {{ ref('gold_business_cast') }}
 

@@ -1,29 +1,52 @@
 version: 2
 
 models:
-  - name: gold_business_season
-    description: "Season"
+  - name: gold_business_content
+    description: "Content"
     data_tests:
       - both_null_or_not_null:
           column_name: votes_count
           column_name2: vote_average
     columns:
-      - name: season_id
-        description: "alphanumeric unique identifier of the season"
+      - name: content_id
+        description: "alphanumeric unique identifier of the movieseries"
         data_tests:
           - not_null
           - unique
-          - relationships:
+      - name: parent_id
+        description: "the content that it is part of"
+        data_tests:
+           - dbt_utils.relationships_where:
               to: ref('gold_business_content')
               field: content_id
-      - name: series_id
-        description: "The movieseries"
-        data_tests:
-          - dbt_utils.relationships_where:
-              to: ref('gold_business_series')
-              field: series_id
-              from_condition: series_id is not null
+              from_condition: parent_id is not null
               to_condition: true
+           - dbt_utils.relationships_where:
+              to: ref('gold_business_content')
+              field: content_id
+              from_condition: parent_id is not null and content_type='movie'
+              to_condition: content_type='movieseries'
+           - dbt_utils.relationships_where:
+              to: ref('gold_business_content')
+              field: content_id
+              from_condition: parent_id is not null and content_type='series'
+              to_condition: content_type='movieseries'
+           - dbt_utils.relationships_where:
+              to: ref('gold_business_content')
+              field: content_id
+              from_condition: parent_id is not null and content_type='season'
+              to_condition: content_type='series'
+           - dbt_utils.relationships_where:
+              to: ref('gold_business_content')
+              field: content_id
+              from_condition: parent_id is not null and content_type='season'
+              to_condition: content_type in ('series','season')
+      - name: content_type
+        description: "the content type"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['movie', 'movieseries', 'episode', 'season', 'series']
       - name: name
         description: "the name of the movie in english us"
       - name: date
@@ -105,7 +128,7 @@ models:
               field_name1: language_iso_639_1
               field_name2: source
               field_name3: key
-      - name: aliasings
+      - name: aliases
         description: "the content links"
         data_tests:
           - array_struct_field_exists_in_table:

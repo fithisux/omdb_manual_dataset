@@ -2,15 +2,15 @@
 
 with source_source_all_content as (
 
-    select id as content_id, name, date from {{ ref('silver_cleansed_all_movies') }}
+    select id as content_id, parent_id, name, date, 'movie' as content_type from {{ ref('silver_cleansed_all_movies') }}
     UNION
-    select id as content_id, name, date from {{ ref('silver_cleansed_all_movieseries') }}
+    select id as content_id, parent_id, name, date, 'movieseries' as content_type from {{ ref('silver_cleansed_all_movieseries') }}
     UNION
-    select id as content_id, name, date from {{ ref('silver_cleansed_all_series') }}
+    select id as content_id, parent_id, name, date, 'series' as content_type from {{ ref('silver_cleansed_all_series') }}
     UNION
-    select id as content_id, name, date from {{ ref('silver_cleansed_all_seasons') }}
+    select id as content_id, parent_id, name, date, 'season' as content_type from {{ ref('silver_cleansed_all_seasons') }}
     UNION
-    select id as content_id, name, date from {{ ref('silver_cleansed_all_episodes') }}
+    select id as content_id, parent_id, name, date, 'episode' as content_type from {{ ref('silver_cleansed_all_episodes') }}
 ), content_countries as (
     select movie_id, array_agg(country_code) as countries
     FROM {{ref('silver_cleansed_movie_countries')}}

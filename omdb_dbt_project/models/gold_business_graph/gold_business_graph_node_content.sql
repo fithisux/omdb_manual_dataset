@@ -2,10 +2,10 @@
 
 with source_content as (
 
-    select movie_id, date, runtime, revenue, budget, 
+    select content_id, content_type, date, runtime, revenue, budget, 
     homepage, vote_average, votes_count, last_update, countries, abstracts, content_links, person_links,
-    refs, trailers, aliasings
-    FROM {{ref('gold_business_movie')}}
+    refs, trailers, aliases
+    FROM {{ref('gold_business_content')}}
 )
    
 select * from source_content

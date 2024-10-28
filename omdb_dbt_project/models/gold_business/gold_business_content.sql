@@ -25,14 +25,14 @@ with source_source_all_content as (
     FROM {{ref('gold_normalized_content_trailer')}}
     group by content_id
 ), content_aliases as (
-    select content_id, array_agg(ROW(name, language_iso_639_1, official_translation)::content_alias_type) as aliasings
+    select content_id, array_agg(ROW(name, language_iso_639_1, official_translation)::content_alias_type) as aliases
     FROM {{ref('gold_normalized_content_alias')}}
     group by content_id
 )
 
 select 
 aa.*,
-bb.abstracts, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliasings
+bb.abstracts, ff.content_links, gg.person_links, hh.refs, ii.trailers, jj.aliases
 from source_source_all_content aa
 left join content_abstracts bb on aa.content_id=bb.content_id
 left join content_content_links ff on aa.content_id=ff.content_id

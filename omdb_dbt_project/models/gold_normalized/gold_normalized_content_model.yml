@@ -9,10 +9,24 @@ models:
               column_name2: vote_average
     columns:
       - name: content_id
-        description: "alphanumeric unique identifier of the movie"
+        description: "alphanumeric unique identifier of the movieseries"
         data_tests:
           - not_null
           - unique
+      - name: parent_id
+        description: "the content that it is part of"
+        data_tests:
+           - dbt_utils.relationships_where:
+              to: ref('gold_normalized_content')
+              field: content_id
+              from_condition: parent_id is not null
+              to_condition: true
+      - name: content_type
+        description: "the content type"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['movie', 'movieseries', 'episode', 'season', 'series']
       - name: name
         description: "the name of the movie in english us"
       - name: date

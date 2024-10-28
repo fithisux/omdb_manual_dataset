@@ -5,7 +5,7 @@ with source_category_has_root_edges as (
     select
 
     
-    category_id as src_category_id, root_id as dst_category_id
+    category_id as from, root_id as to
     
     FROM {{ ref('gold_business_category') }}
 

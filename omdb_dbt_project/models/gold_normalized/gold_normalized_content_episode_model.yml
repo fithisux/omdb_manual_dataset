@@ -10,9 +10,11 @@ models:
         data_tests:
            - unique
            - not_null
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('gold_normalized_content')
               field: content_id
+              from_condition: true
+              to_condition: content_type='episode'
       - name: series_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         data_tests:
