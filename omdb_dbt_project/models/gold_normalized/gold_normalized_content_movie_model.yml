@@ -16,6 +16,8 @@ models:
       - name: movieseries_id
         description: "The movie series"
         data_tests:
-          - relationships:
+          - dbt_utils.relationships_where:
               to: ref('gold_normalized_content_movieseries')
               field: movieseries_id
+              from_condition: movieseries_id is not null
+              to_condition: true

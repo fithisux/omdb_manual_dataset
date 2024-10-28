@@ -21,9 +21,11 @@ models:
       - name: language_iso_639_1
         description: "The language"
         data_tests:
-           - relationships:
-              to: ref('language_codes')
-              field: alpha2
+            - dbt_utils.relationships_where:
+                to: ref('language_codes')
+                field: alpha2
+                from_condition: language_iso_639_1 is not null
+                to_condition: true
       - name: name
         description: "the name of the episode in english us"
         data_tests:

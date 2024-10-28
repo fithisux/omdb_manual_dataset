@@ -19,9 +19,11 @@ models:
       - name: movieseries_id
         description: "The movieseries"
         data_tests:
-          - relationships:
+          - dbt_utils.relationships_where:
               to: ref('gold_business_movieseries')
               field: movieseries_id
+              from_condition: movieseries_id is not null
+              to_condition: true
       - name: name
         description: "the name of the movie in english us"
       - name: date

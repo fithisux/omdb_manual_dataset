@@ -19,6 +19,8 @@ models:
       - name: country_code
         description: "country code"
         data_tests:
-          - relationships:
+         - dbt_utils.relationships_where:
               to: ref('region_codes')
               field: alpha2
+              from_condition: country_code is not null
+              to_condition: true

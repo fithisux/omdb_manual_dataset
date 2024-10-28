@@ -13,9 +13,11 @@ models:
       - name: parent_id
         description: "The movie series"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_movieseries')
               field: id
+              from_condition: parent_id is not null
+              to_condition: true
       - name: name
         description: "the name of the series in english us"
       - name: date

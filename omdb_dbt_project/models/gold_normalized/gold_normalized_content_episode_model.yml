@@ -16,12 +16,16 @@ models:
       - name: series_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('gold_normalized_content_series')
               field: series_id
+              from_condition: series_id is not null
+              to_condition: true
       - name: season_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('gold_normalized_content_season')
               field: season_id
+              from_condition: season_id is not null
+              to_condition: true

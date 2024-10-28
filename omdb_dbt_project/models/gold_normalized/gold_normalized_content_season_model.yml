@@ -16,6 +16,8 @@ models:
       - name: series_id
         description: "The series which contain this"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('gold_normalized_content_series')
               field: series_id
+              from_condition: series_id is not null
+              to_condition: true

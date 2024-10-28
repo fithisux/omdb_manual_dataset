@@ -16,27 +16,40 @@ models:
       - name: parent_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         data_tests:
-           - relationships:
-              to: ref('with_cleansing_all_ids_of_series')
+           - dbt_utils.relationships_where:
+              to: ref('with_cleansing_all_ids_of_series_and_seasons')
               field: id
+              from_condition: parent_id is not null
+              to_condition: true
       - name: series_id
         description: "The series id"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_series')
               field: id
+              from_condition: series_id is not null
+              to_condition: true
       - name: provided_series_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_series')
               field: id
+              from_condition: provided_series_id is not null
+              to_condition: true
+           - dbt_utils.relationships_where:
+              to: ref('with_cleansing_all_ids_of_singleton_series')
+              field: id
+              from_condition: provided_series_id is not null and parent_id is null
+              to_condition: true
       - name: season_id
         description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
         data_tests:
-           - relationships:
+           - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_seasons')
               field: id
+              from_condition: season_id is not null
+              to_condition: true
       - name: name
         description: "the name of the episode in english us"
       - name: date

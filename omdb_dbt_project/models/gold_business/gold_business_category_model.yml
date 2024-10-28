@@ -20,9 +20,11 @@ models:
       - name: parent_id
         description: "the parent category"
         data_tests:
-          - relationships:
+          - dbt_utils.relationships_where:
               to: ref('gold_business_category')
               field: category_id
+              from_condition: parent_id is not null
+              to_condition: true
       - name: names
         description: "the parent category"
         data_tests:

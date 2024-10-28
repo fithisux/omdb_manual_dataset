@@ -13,21 +13,27 @@ models:
         data_tests:
           - not_null
           - unique
-          - relationships:
+          - dbt_utils.relationships_where:
               to: ref('gold_business_content')
               field: content_id
+              from_condition: episode_id is not null
+              to_condition: true
       - name: series_id
         description: "The series"
         data_tests:
-          - relationships:
+          - dbt_utils.relationships_where::
               to: ref('gold_business_series')
               field: series_id
+              from_condition: series_id is not null
+              to_condition: true
       - name: season_id
         description: "The season"
         data_tests:
-          - relationships:
+          - dbt_utils.relationships_where::
               to: ref('gold_business_season')
               field: season_id
+              from_condition: season_id is not null
+              to_condition: true
       - name: name
         description: "the name of the movie in english us"
       - name: date
