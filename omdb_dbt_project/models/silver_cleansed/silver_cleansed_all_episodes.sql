@@ -15,7 +15,7 @@ with source_all_episodes as (
     from {{ ref('silver_casted_all_movieseries') }}
     where (parent_id in (select id from {{ ref('silver_casted_all_series') }}))
 
-), all_episodes_amended as (
+), all_episodes_imputed as (
 
     select
 
@@ -38,4 +38,4 @@ with source_all_episodes as (
     inner join {{ ref('silver_cleansed_all_seasons') }} bb on aa.parent_id=bb.id
 )
 
-select * from all_episodes_amended
+select * from all_episodes_imputed
