@@ -5,6 +5,7 @@ dbt.session.sql
 err/
 pgdata/
 backup-raw-data/
+.virtual_documents/**
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -9,7 +9,7 @@ models:
           expression: "coalesce(provided_series_id, series_id) = series_id"
     columns:
       - name: id
-        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        description: "The episode id"
         data_tests:
            - unique
            - not_null
@@ -22,7 +22,7 @@ models:
               from_condition: parent_id is not null
               to_condition: true
       - name: series_id
-        description: "The series id"
+        description: "The inferred series id"
         data_tests:
            - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_series')
@@ -30,7 +30,7 @@ models:
               from_condition: series_id is not null
               to_condition: true
       - name: provided_series_id
-        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        description: "The series id provided in the original dataset"
         data_tests:
            - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_series')
@@ -43,7 +43,7 @@ models:
               from_condition: provided_series_id is not null and parent_id is null
               to_condition: true
       - name: season_id
-        description: "The season id. BUT!! in some cases it is equal with the series id. Hence the mixed test"
+        description: "The season id.""
         data_tests:
            - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_seasons')
