@@ -43,7 +43,7 @@ models:
               from_condition: provided_series_id is not null and parent_id is null
               to_condition: true
       - name: season_id
-        description: "The season id.""
+        description: "The season id."
         data_tests:
            - dbt_utils.relationships_where:
               to: ref('silver_cleansed_all_seasons')

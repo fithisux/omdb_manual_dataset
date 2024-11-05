@@ -21,6 +21,10 @@ models:
               field: content_id
               from_condition: parent_id is not null
               to_condition: true
+           - dbt_utils.expression_is_true:
+              expression: 'is null'
+              config:
+                where: content_type='movieseries'
            - dbt_utils.relationships_where:
               to: ref('gold_business_content')
               field: content_id
