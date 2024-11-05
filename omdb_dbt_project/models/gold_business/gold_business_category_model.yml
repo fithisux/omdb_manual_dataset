@@ -26,7 +26,7 @@ models:
               from_condition: parent_id is not null
               to_condition: true
       - name: names
-        description: "the parent category"
+        description: "the names of the category"
         data_tests:
           - not_null
           - array_struct_field_exists_in_table:
